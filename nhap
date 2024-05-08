@@ -1,0 +1,44 @@
+while (current != null) {
+            // Vẽ node
+            g.setColor(Color.BLUE);
+            g.fillRect(startX + i * 100, startY, nodeSize, nodeSize);
+            g.setColor(Color.WHITE);
+            g.drawString(current.data + "", startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5);
+            //Vẽ chỉ số
+            g.setColor(Color.BLACK);
+            if (i == 0) {
+                g.drawString("head [" + i + "]" , startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5 + 30);
+            } else if (i == linkedList.size()) {
+                g.drawString("tail [" + i + "]" , startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5 + 30);
+            } else {
+                g.drawString("[" + i + "]" , startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5 + 30);
+            }
+            // Vẽ mũi tên nối node tiếp theo (nếu có)
+            if (current.next != null) {
+                g.setColor(Color.BLACK);
+                int nextNodeX = startX + (i + 1) * 100;
+                int nextNodeY = startY + nodeSize / 2;
+                int arrowX = startX + (i + 1) * 100 - arrowLength;
+                int arrowY = startY + nodeSize / 2;
+                // Vẽ mũi tên
+                int x1 = arrowX;
+                int y1= arrowY;
+                int x2 = nextNodeX;
+                int y2 = nextNodeY;
+                int arrowLength = 10;
+                double angle = Math.atan2(y2 - y1, x2 - x1);
+                int dx = (int) (arrowLength * Math.cos(angle));
+                int dy = (int) (arrowLength * Math.sin(angle));
+                // Vẽ đường thẳng
+                g.drawLine(x1, y1, x2, y2);
+                // Vẽ đầu mũi tên
+                g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
+                g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
+                current = current.next;
+                i++;
+                }
+            }
+
+
+
+            
