@@ -53,7 +53,6 @@ class LinkedListPanel extends JPanel {
             g.setColor(Color.WHITE);
             g.drawString(String.valueOf(currentNode.value), startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5);
 
-
             //Vẽ chỉ số
             g.setColor(Color.BLACK);
             if (i == 0) {
@@ -64,32 +63,26 @@ class LinkedListPanel extends JPanel {
                 g.drawString("[" + i + "]" , startX + i * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5 + 30);
             }
 
-
             // Vẽ mũi tên nối node tiếp theo (nếu có)
-            if (currentNode.next != null) {
-                arrowLength = 60;
+            if (currentNode != null) {
                 g.setColor(Color.BLACK);
-                int nextNodeX = startX + (i + 1) * 100;
-                int nextNodeY = startY + nodeSize / 2;
-                int arrowX = startX + (i + 1) * 100 - arrowLength;
-                int arrowY = startY + nodeSize / 2;
-
-                int x1 = arrowX;
-                int y1 = arrowY;
-                int x2 = nextNodeX;
-                int y2 = nextNodeY;
-                arrowLength = 10;
-                double angle = Math.atan2(y2 - y1, x2 - x1);
-                int dx = (int) (arrowLength * Math.cos(angle));
-                int dy = (int) (arrowLength * Math.sin(angle));
-        
                 // Vẽ đường thẳng
+                int x1 = startX + (i + 1) * 100 - 60;
+                int y1 = startY + nodeSize / 2;
+                int x2 = startX + (i + 1) * 100;
+                int y2 = startY + nodeSize / 2;
                 g.drawLine(x1, y1, x2, y2);
-        
+
                 // Vẽ đầu mũi tên
+                double angle = Math.atan2(y2 - y1, x2 - x1);
+                int dx = (int) (10 * Math.cos(angle));
+                int dy = (int) (10 * Math.sin(angle));
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
             }
+            g.drawString("null", startX + (i+1) * 100 + nodeSize / 2 - 5, startY + nodeSize / 2 + 5);
+
+
         }
     }
 }

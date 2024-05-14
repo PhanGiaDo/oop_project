@@ -3,7 +3,7 @@ package z.model;
 import java.awt.*;
 import javax.swing.*;
 
-import z.animation.LinkedListAnimation;
+import z.animation.*;
 import z.controller.Controller;
 import z.view.Menuview;
 import z.model.Node;
@@ -11,14 +11,15 @@ import z.model.Node;
 public class LinkedList {
     public Node head;
     private Menuview menuview;
-    private LinkedListAnimation llist_animation;
+    private z.animation.LinkedListAnimation llist_animation = new LinkedListAnimation();
+
 
 
     public LinkedList() {
         this.head = null;
     }
 
-    public LinkedList(Menuview menuview) {
+    public void LinkedList_Menuview(Menuview menuview) {
         Controller ac = new Controller(menuview);
         Font font = new Font("Time New Roman", Font.BOLD, 15);
         menuview.setLayout(new BorderLayout());
@@ -59,7 +60,7 @@ public class LinkedList {
         menuview.revalidate();  
     }
 
-    public LinkedList(Menuview menuview, String src){
+    public void LinkedList_Menuview(Menuview menuview, String src){
         if (src.equals("Remove")) {
             //Controller ac = new Controller(menuview);
             Font font = new Font("Time New Roman", Font.BOLD, 20);
@@ -194,10 +195,15 @@ public class LinkedList {
             menuview.repaint();
         }
     }
-
-    public void LinkedListAnimationInsert(Menuview menuview, LinkedList linkedList, int index, int value) {
-        this.llist_animation = new LinkedListAnimation(linkedList, index, value);
-        this.llist_animation.setBounds(10, 170, 5000, 5000);
+    public void LinkedListAnimation(Menuview menuview, LinkedList linkedList, int index, int value, String src) {
+        if (src.equals("insert")) {
+            this.llist_animation.LinkedListAnimationInsert(linkedList, index, value);
+        } else if (src.equals("remove")) {
+            this.llist_animation.LinkedListAnimationRemove(linkedList, index);
+        } else if (src.equals("search")) {
+            this.llist_animation.LinkedListAnimationSearch(linkedList, value);
+        }
+        this.llist_animation.setBounds(200, 300, 5000, 5000);
         menuview.add(this.llist_animation);
         menuview.repaint();
         menuview.revalidate();
@@ -252,25 +258,54 @@ public class LinkedList {
     }
 
 
-    // public void delete(int data) {
-    //     if (head == null) {
-    //         return; 
-    //     }
-    //     if (head.data == data) {
-    //         head = head.next; 
-    //         return;
-    //     }
+    public void remove(int index) {
+        if (head == null) {
+            System.out.println("List is empty. Cannot delete.");
+            return;
+        }
 
-    //     Node current = head;
-    //     while (current.next != null) {
-    //         if (current.next.data == data) {
-    //             current.next = current.next.next; 
-    //             return;
-    //         }
-    //         current = current.next;
-    //     }
+        if (index < 1) {
+            System.out.println("Invalid index. Cannot delete.");
+            return;
+        }
 
-    // }
+        if (index == 1) {
+            head = head.next; // Xóa node đầu danh sách
+            return;
+        }
+
+       
+        Node p = head;
+        int currentIndex = 1;
+
+        while ((p.next).next != null && currentIndex != index - 1) {
+            p = p.next;
+            currentIndex++;
+        }
+
+        if (currentIndex == index - 1) {
+            p.next = (p.next).next;
+            return;
+        }
+        
+        System.out.println("Index out of bounds. Cannot delete.");
+        return;
+    }
+
+    public int find(int value) {
+        Node current = head;
+        int index = 0;
+
+        while (current != null) {
+            if (current.data == value) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
 
     public int size() {
         int count = 0;
