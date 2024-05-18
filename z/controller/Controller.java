@@ -3,18 +3,18 @@ package z.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import z.animation.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-import z.model.LinkedList;
-import z.model.Queue;
-import z.model.Stack;
+import z.model.*;
+
 import z.view.Menuview;
 
 public class Controller implements ActionListener {
     private Menuview menuview;
     private LinkedList linkedList = new LinkedList();
-    private Stack stack;
-    private Queue queue;
+    private Stack stack = new Stack();
+    private Queue queue = new Queue();
     
     public Controller(Menuview menuview) {
         this.menuview = menuview;
@@ -45,7 +45,30 @@ public class Controller implements ActionListener {
                 System.out.println("Remove");
                 break;
             case "Run":
-                if (menuview.llist_create) {
+                if (menuview.queue_dequeue) {
+                    this.queue.QueueAnimation(menuview, queue, 1, "Dequeue");
+                    System.out.println("Dequeue");
+                } else if (menuview.queue_enqueue) {
+                    int value = Integer.parseInt(menuview.text.getText());
+                    this.queue.QueueAnimation(menuview, queue, value, "Enqueue");
+                    System.out.println("Enqueue value = " + value);
+                } else if (menuview.queue_peekback) {
+                    this.queue.QueueAnimation(menuview, queue, 1, "Peek_Back");
+                    System.out.println("Peek Back");
+                } else if (menuview.queue_peekfront) {
+                    this.queue.QueueAnimation(menuview, queue, 1, "Peek_Front");
+                    System.out.println("Peek Front");
+                } else if (menuview.stack_push) {
+                    int value = Integer.parseInt(menuview.text.getText());
+                    this.stack.StackAnimation(menuview, stack, value, "push");
+                    System.out.println("push value = " + value);
+                } else if (menuview.stack_pop) {
+                    this.stack.StackAnimation(menuview, stack, 1, "pop");
+                    System.out.println("pop");
+                } else if (menuview.stack_peek) {
+                    this.stack.StackAnimation(menuview, stack, 1, "peek");
+                    System.out.println("peek");
+                } else if (menuview.llist_create) {
                     System.out.println("create n = " + menuview.text.getText());
                 } else if (menuview.llist_search) {
                     int value = Integer.parseInt(menuview.text.getText());
@@ -63,12 +86,67 @@ public class Controller implements ActionListener {
                 }
                 break;
             case "Stack":
-                this.stack = new Stack(menuview);
+                this.stack.Stack_Menuview(menuview);
                 System.out.println("Stack");
                 break;
+            case "Push":
+                this.stack.Stack_Menuview(menuview, src);
+                System.out.println("Push");
+                break;
+            case "Pop":
+                this.stack.Stack_Menuview(menuview, src);
+                System.out.println("Pop");
+                break;
+            case "Peek":
+                this.stack.Stack_Menuview(menuview, src);
+                System.out.println("Peek");
+                break;
             case "Queue":
-                this.queue = new Queue(menuview);
+                this.queue.Queue_Menuview(menuview);
                 System.out.println("Queue");
+                break;
+            case "Enqueue":
+                this.queue.Queue_Menuview(menuview, src);
+                System.out.println("Enqueue");
+                break;
+            case "Dequeue":
+                this.queue.Queue_Menuview(menuview, src);
+                System.out.println("Dequeue");
+                break;
+            case "Peek_Front":
+                this.queue.Queue_Menuview(menuview, src);
+                System.out.println("Peek_Front");
+                break;
+            case "Peek_Back":
+                this.queue.Queue_Menuview(menuview, src);
+                System.out.println("Peek_Back");
+                break;
+            case "quit":
+                int response = JOptionPane.showConfirmDialog(
+                        this.menuview,
+                        "Are you sure you want to quit?",
+                        "Quit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        new ImageIcon("z\\icon\\question.png")
+                );
+                if (response == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+                break;
+            case "usage":
+                try {
+                    Runtime.getRuntime().exec(new String[] { "notepad.exe", "z\\help\\usage.txt" });
+                } catch (Exception a) {
+                    a.printStackTrace();
+                }
+                break;
+            case "aim":
+                try {
+                    Runtime.getRuntime().exec(new String[] { "notepad.exe", "z\\help\\aim.txt" });
+                } catch (Exception a) {
+                    a.printStackTrace();
+                }
                 break;
             default:
                 System.out.println(src);

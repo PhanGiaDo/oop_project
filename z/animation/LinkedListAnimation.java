@@ -175,7 +175,6 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
             }
         }
 
-
         if (removeMid) {
             if (stage >= 1) {
                 Node p = linkedList.head;
@@ -292,8 +291,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
 
             }
         }
-
-
+     
         if (removeFirst) {
             Node p = linkedList.head;
             int i = 0;
@@ -330,6 +328,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
             g.drawString("null", 0 + i * 80 + nodeSize / 2 - 5, 0 + nodeSize / 2 + 5);
 
         }
+       
         if (insertFirst) { 
             if (stage >= 1) {
                 Node p = linkedList.head;
@@ -497,8 +496,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
             }
 
         }
-
-        
+     
         if (end) {
             Node p = linkedList.head;
             int i = 0;
@@ -556,7 +554,6 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                 } 
             }
         }
-
 
         else if (removeMid) {
             if (stage == 1) {
@@ -623,7 +620,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                 timer.setDelay(1000);
                 alpha += 2;
             } else if (alpha == 82) {
-                timer.setDelay(50);
+                timer.setDelay(25);
                 linkedList.insertMid(value, index);
                 end = true;
                 insertFirst = false;

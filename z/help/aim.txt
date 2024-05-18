@@ -1,0 +1,10 @@
+This program illustrating the operation of data structures such as linked list, stack, and queue is a useful exercise for 
+gaining a deeper understanding of how these fundamental data structures work and how they are implemented in programming. 
+The aims of this program:
+
++ Understanding the operation and implementation of basic data structures.
++ Improving programming skills and algorithmic thinking.
++ Practical application of data structures in solving programming problems.
+
+=> This program helps you familiarize yourself with and gain a better understanding of basic data structures and 
+how to use them effectively in Java.

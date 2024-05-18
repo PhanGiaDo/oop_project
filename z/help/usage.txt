@@ -1,0 +1,17 @@
+Usage:
+
+1. Linked List: Implement a simple linked list using the Node class to store data and a pointer to the next node.
++ "Insert" : Insert a node at a specified index of linkedlist
++ "Remove" : Remove a node at a specified index of linkedlist
++ "Search" : Search a node, display the results on the screen
+
+2. Stack:
++ "Push" : Add 1 node to the top of the stack
++ "Pop" : Remove 1 node at the top of the stack
++ "Peek" : Display the value at the top of the stack
+
+3. Queue:
++ "Enqueue" : Add 1 node to the tail of the queue
++ "Dequeue" : Remove 1 node at the head of the queue
++ "Peek Front" : Display the value at the head of the stack
++ "Peek Back" : Display the value at the tail of the stack

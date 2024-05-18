@@ -1,7 +1,6 @@
 package z.test;
 
 import javax.swing.UIManager;
-
 import z.view.Menuview;
 
 public class Test {

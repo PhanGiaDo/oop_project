@@ -3,17 +3,11 @@ package z.model;
 import java.awt.*;
 import javax.swing.*;
 
-import z.animation.*;
 import z.controller.Controller;
 import z.view.Menuview;
-import z.model.Node;
 
 public class LinkedList {
     public Node head;
-    private Menuview menuview;
-    private z.animation.LinkedListAnimation llist_animation = new LinkedListAnimation();
-
-
 
     public LinkedList() {
         this.head = null;
@@ -27,19 +21,22 @@ public class LinkedList {
         if (menuview.jToolBar != null) {
             menuview.remove(menuview.jToolBar);
         }
+        if (menuview.stack_animation != null) {
+            menuview.remove(menuview.stack_animation);
+        }
+        if (menuview.queue_animation != null) {
+            menuview.remove(menuview.queue_animation);
+        }
+
         menuview.jToolBar = new JToolBar();
-
-        JButton button_create = new JButton("Create");
-        button_create.addActionListener(ac);
-        button_create.setFont(font);
-
-        JButton button_search = new JButton("Search");
-        button_search.addActionListener(ac);
-        button_search.setFont(font);
 
         JButton button_insert = new JButton("Insert");
         button_insert.addActionListener(ac);
         button_insert.setFont(font);
+
+        JButton button_search = new JButton("Search");
+        button_search.addActionListener(ac);
+        button_search.setFont(font);
 
         JButton button_remove = new JButton("Remove");
         button_remove.addActionListener(ac);
@@ -49,12 +46,10 @@ public class LinkedList {
         button_run.addActionListener(ac);
         button_run.setFont(font);
 
-        menuview.jToolBar.add(button_create);
-        menuview.jToolBar.add(button_search);
         menuview.jToolBar.add(button_insert);
         menuview.jToolBar.add(button_remove);
+        menuview.jToolBar.add(button_search);
         menuview.jToolBar.add(button_run);
-
 
         menuview.add(menuview.jToolBar , BorderLayout.NORTH);
         menuview.revalidate();  
@@ -62,7 +57,6 @@ public class LinkedList {
 
     public void LinkedList_Menuview(Menuview menuview, String src){
         if (src.equals("Remove")) {
-            //Controller ac = new Controller(menuview);
             Font font = new Font("Time New Roman", Font.BOLD, 20);
             menuview.setLayout(null);
 
@@ -70,7 +64,6 @@ public class LinkedList {
             menuview.llist_search = false;
             menuview.llist_insert = false;
             menuview.llist_remove = true;
-
 
             if (menuview.label != null) {
                 menuview.remove(menuview.label);
@@ -94,7 +87,6 @@ public class LinkedList {
             menuview.revalidate();
             menuview.repaint();
         } else if (src.equals("Insert")) {
-            //Controller ac = new Controller(menuview);
             Font font = new Font("Time New Roman", Font.BOLD, 20);
             menuview.setLayout(null);
             
@@ -132,7 +124,6 @@ public class LinkedList {
             menuview.revalidate();
             menuview.repaint();
         } else if (src.equals("Search")) {
-            //Controller ac = new Controller(menuview);
             Font font = new Font("Time New Roman", Font.BOLD, 20);
             menuview.setLayout(null);
 
@@ -163,7 +154,6 @@ public class LinkedList {
             menuview.revalidate();
             menuview.repaint();
         } else if (src.equals("Create")) {
-            //Controller ac = new Controller(menuview);
             Font font = new Font("Time New Roman", Font.BOLD, 20);
             menuview.setLayout(null);
 
@@ -195,16 +185,17 @@ public class LinkedList {
             menuview.repaint();
         }
     }
+    
     public void LinkedListAnimation(Menuview menuview, LinkedList linkedList, int index, int value, String src) {
         if (src.equals("insert")) {
-            this.llist_animation.LinkedListAnimationInsert(linkedList, index, value);
+            menuview.llist_animation.LinkedListAnimationInsert(linkedList, index, value);
         } else if (src.equals("remove")) {
-            this.llist_animation.LinkedListAnimationRemove(linkedList, index);
+            menuview.llist_animation.LinkedListAnimationRemove(linkedList, index);
         } else if (src.equals("search")) {
-            this.llist_animation.LinkedListAnimationSearch(linkedList, value);
+            menuview.llist_animation.LinkedListAnimationSearch(linkedList, value);
         }
-        this.llist_animation.setBounds(200, 300, 5000, 5000);
-        menuview.add(this.llist_animation);
+        menuview.llist_animation.setBounds(200, 300, 5000, 5000);
+        menuview.add(menuview.llist_animation);
         menuview.repaint();
         menuview.revalidate();
     }
@@ -257,7 +248,6 @@ public class LinkedList {
         current.next = newNode;
     }
 
-
     public void remove(int index) {
         if (head == null) {
             System.out.println("List is empty. Cannot delete.");
@@ -270,11 +260,10 @@ public class LinkedList {
         }
 
         if (index == 1) {
-            head = head.next; // Xóa node đầu danh sách
+            head = head.next;
             return;
         }
-
-       
+  
         Node p = head;
         int currentIndex = 1;
 
@@ -306,7 +295,6 @@ public class LinkedList {
         return -1;
     }
 
-
     public int size() {
         int count = 0;
         Node current = head;
@@ -317,13 +305,4 @@ public class LinkedList {
         return count;
     }
 
-    public void printList() {
-        Node current = head;
-        System.out.print("Linked List: ");
-        while (current != null) {
-            System.out.print(current.data + " -> ");
-            current = current.next;
-        }
-        System.out.println("null");
-    }
 }
