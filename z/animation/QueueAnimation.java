@@ -84,21 +84,21 @@ public class QueueAnimation extends JPanel implements ActionListener{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (peek_back) {
-            Node p = queue.head;
+            Node p = queue.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(i * 80, 40, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
                 g.drawString("head [" + (i+1) + "]" , i * 80, 90);
                 }
                 if (i == queue.size() - 1) {
-                tail = p.data;
+                tail = p.getData();
                 g.drawString("tail [" + (i+1) + "]" , i * 80 + 5, 35);
                 } 
                 if (i != 0 && i != queue.size() - 1) {
@@ -119,7 +119,7 @@ public class QueueAnimation extends JPanel implements ActionListener{
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
@@ -132,21 +132,21 @@ public class QueueAnimation extends JPanel implements ActionListener{
         }
 
         if (peek_front) {
-            Node p = queue.head;
+            Node p = queue.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(i * 80, 40, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
                 g.drawString("head [" + (i+1) + "]" , i * 80, 90);
                 }
                 if (i == queue.size() - 1) {
-                tail = p.data;
+                tail = p.getData();
                 g.drawString("tail [" + (i+1) + "]" , i * 80 + 5, 35);
                 } 
                 if (i != 0 && i != queue.size() - 1) {
@@ -167,26 +167,26 @@ public class QueueAnimation extends JPanel implements ActionListener{
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
             g.drawString("null", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
 
             g.setFont(new Font("TIME NEW ROMAN", Font.BOLD, 40));
-            g.drawString("value at the head: " + queue.head.data , 10, 300);
+            g.drawString("value at the head: " + queue.getHead().getData() , 10, 300);
             g.setFont(this.getFont());
         }
 
         if (dequeue) {
-            Node p = queue.head;
+            Node p = queue.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(i * 80, 40, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
@@ -211,7 +211,7 @@ public class QueueAnimation extends JPanel implements ActionListener{
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
@@ -219,14 +219,14 @@ public class QueueAnimation extends JPanel implements ActionListener{
         }
 
         if (enqueue) {
-            Node p = queue.head;
+            Node p = queue.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(i * 80, 40, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
@@ -238,7 +238,7 @@ public class QueueAnimation extends JPanel implements ActionListener{
                 if (i != 0 && i != queue.size() - 1) {
                 g.drawString("[" + (i+1) + "]" , i * 80 + 15, 90);
                 }
-                if (p.next != null) {
+                if (p.getNext() != null) {
                     //Ve mui ten
                     g.setColor(Color.BLACK);
                     // Vẽ đường thẳng
@@ -255,7 +255,7 @@ public class QueueAnimation extends JPanel implements ActionListener{
                     g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 }
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //Ve newNode
@@ -282,14 +282,14 @@ public class QueueAnimation extends JPanel implements ActionListener{
         }
 
         if (end) {
-            Node p = queue.head;
+            Node p = queue.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(i * 80, 40, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, 40 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
@@ -316,7 +316,7 @@ public class QueueAnimation extends JPanel implements ActionListener{
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null

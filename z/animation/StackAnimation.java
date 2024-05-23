@@ -84,14 +84,14 @@ public class StackAnimation extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (peek) {
-            Node p = stack.top;
+            Node p = stack.getTop();
             int i = 1;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(40, i * 80, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", 55, i * 80 + 25);
+                g.drawString(p.getData() + "", 55, i * 80 + 25);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 1) {
@@ -114,27 +114,27 @@ public class StackAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
             g.drawString("null", 55, i * 80 + 25);
 
             g.setFont(new Font("TIME NEW ROMAN", Font.BOLD, 20));
-            g.drawString("value at the top : " + stack.top.data, 0, 500);
+            g.drawString("value at the top : " + stack.getTop().getData(), 0, 500);
             g.setFont(this.getFont());
 
         }
 
         if (pop) {
-            Node p = stack.top;
+            Node p = stack.getTop();
             int i = 1;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(40, i * 80, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", 55, i * 80 + 25);
+                g.drawString(p.getData() + "", 55, i * 80 + 25);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 1) {
@@ -155,7 +155,7 @@ public class StackAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
@@ -164,14 +164,14 @@ public class StackAnimation extends JPanel implements ActionListener {
         }
 
         if (push) {
-            Node p = stack.top;
+            Node p = stack.getTop();
             int i = 1;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(40, i * 80, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", 55, i * 80 + 25);
+                g.drawString(p.getData() + "", 55, i * 80 + 25);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 1) {
@@ -194,7 +194,7 @@ public class StackAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
@@ -224,14 +224,14 @@ public class StackAnimation extends JPanel implements ActionListener {
         }
 
         if (end) {
-            Node p = stack.top;
+            Node p = stack.getTop();
             int i = 1;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(40, i * 80, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", 55, i * 80 + 25);
+                g.drawString(p.getData() + "", 55, i * 80 + 25);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 1) {
@@ -254,7 +254,7 @@ public class StackAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null

@@ -119,11 +119,11 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
         super.paintComponent(g);
         if (search) {
             if (stage >= 1) {
-                Node p = linkedList.head;
+                Node p = linkedList.getHead();
                 int i = 0;
                 while (p != null) {
                     //Ve node
-                    if (i == indexCurrent && p.data == value) {
+                    if (i == indexCurrent && p.getData() == value) {
                         found = true;
                         g.setColor(Color.GREEN);
                     } else if (i == indexCurrent) {
@@ -133,7 +133,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     }
                     g.fillRect(i * 80, 0, nodeSize, nodeSize);
                     g.setColor(Color.WHITE);
-                    g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
+                    g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
                     //ve chi so
                     g.setColor(Color.BLACK);
                     if (i == 0) {
@@ -156,7 +156,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                     g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                     //nextNode
-                    p = p.next;
+                    p = p.getNext();
                     i++;
                 }
                 //null
@@ -165,7 +165,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
 
             if (stage == 2) {
                 g.setFont(new Font("TIME NEW ROMAN", Font.BOLD, 40));
-                g.drawString("found in index: " + (indexCurrent + 1), 10, 300);
+                g.drawString("found in index: " + linkedList.find(value), 10, 300);
                 g.setFont(this.getFont());
             }
             if (stage == 3) {
@@ -177,7 +177,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
 
         if (removeMid) {
             if (stage >= 1) {
-                Node p = linkedList.head;
+                Node p = linkedList.getHead();
                 int i = 0;
                 while (p != null) {
                     //Ve node
@@ -190,7 +190,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     }
                     g.fillRect(i * 80, 0, nodeSize, nodeSize);
                     g.setColor(Color.WHITE);
-                    g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
+                    g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
                     //ve chi so
                     g.setColor(Color.BLACK);
                     if (i == 0) {
@@ -213,7 +213,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                     g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                     //nextNode
-                    p = p.next;
+                    p = p.getNext();
                     i++;
                 }
                 //null
@@ -293,14 +293,14 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
         }
      
         if (removeFirst) {
-            Node p = linkedList.head;
+            Node p = linkedList.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(0 + i * 80, 0, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
@@ -321,7 +321,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null
@@ -331,14 +331,14 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
        
         if (insertFirst) { 
             if (stage >= 1) {
-                Node p = linkedList.head;
+                Node p = linkedList.getHead();
                 int i = 0;
                 while (p != null) {
                     //Ve node
                     g.setColor(Color.BLUE);
                     g.fillRect(i * 80, 0, nodeSize, nodeSize);
                     g.setColor(Color.WHITE);
-                    g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
+                    g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
                     //ve chi so
                     g.setColor(Color.BLACK);
                     if (i == 0) {
@@ -361,7 +361,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                     g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                     //nextNode
-                    p = p.next;
+                    p = p.getNext();
                     i++;
                 }
                 //null
@@ -393,7 +393,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
 
         if (insertMid) {
             if (stage >= 1) {
-                Node p = linkedList.head;
+                Node p = linkedList.getHead();
                 int i = 0;
                 while (p != null) {
                     //Ve node
@@ -406,7 +406,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     }
                     g.fillRect(i * 80, 0, nodeSize, nodeSize);
                     g.setColor(Color.WHITE);
-                    g.drawString(p.data + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
+                    g.drawString(p.getData() + "", i * 80 + nodeSize / 2 - 5, nodeSize / 2 + 5);
                     //ve chi so
                     g.setColor(Color.BLACK);
                     if (i == 0) {
@@ -429,7 +429,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                     g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                     g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                     //nextNode
-                    p = p.next;
+                    p = p.getNext();
                     i++;
                 }
                 //null
@@ -498,14 +498,14 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
         }
      
         if (end) {
-            Node p = linkedList.head;
+            Node p = linkedList.getHead();
             int i = 0;
             while (p != null) {
                 //Ve node
                 g.setColor(Color.BLUE);
                 g.fillRect(0 + i * 80, 0, nodeSize, nodeSize);
                 g.setColor(Color.WHITE);
-                g.drawString(p.data + "", 0 + i * 80 + nodeSize / 2 - 5, 0 + nodeSize / 2 + 5);
+                g.drawString(p.getData() + "", 0 + i * 80 + nodeSize / 2 - 5, 0 + nodeSize / 2 + 5);
                 //ve chi so
                 g.setColor(Color.BLACK);
                 if (i == 0) {
@@ -528,7 +528,7 @@ public class LinkedListAnimation extends JPanel implements ActionListener {
                 g.drawLine(x2, y2, x2 - dx - dy, y2 - dy + dx);
                 g.drawLine(x2, y2, x2 - dx + dy, y2 - dy - dx);
                 //nextNode
-                p = p.next;
+                p = p.getNext();
                 i++;
             }
             //null

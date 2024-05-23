@@ -25,100 +25,98 @@ public class Controller implements ActionListener {
         String src = e.getActionCommand();
         switch (src) {
             case "Linked List":
-                this.linkedList.LinkedList_Menuview(menuview);
+                this.menuview.LinkedList_Menuview();
                 System.out.println("Linked List");
                 break;
             case "Create":
-                this.linkedList.LinkedList_Menuview(menuview, src);
+                this.menuview.LinkedList_Menuview(src);
                 System.out.println("Create");
                 break;
             case "Search":
-                this.linkedList.LinkedList_Menuview(menuview, src);
+                this.menuview.LinkedList_Menuview(src);
                 System.out.println("Search");
                 break;    
             case "Insert":
-                this.linkedList.LinkedList_Menuview(menuview, src);
+                this.menuview.LinkedList_Menuview(src);
                 System.out.println("Insert");
                 break;
             case "Remove":
-                this.linkedList.LinkedList_Menuview(menuview, src);
+                this.menuview.LinkedList_Menuview(src);
                 System.out.println("Remove");
                 break;
             case "Run":
-                if (menuview.queue_dequeue) {
-                    this.queue.QueueAnimation(menuview, queue, 1, "Dequeue");
+                if (menuview.getQueueState().equals("dequeue")) {
+                    this.menuview.QueueAnimation(queue, 1, "Dequeue");
                     System.out.println("Dequeue");
-                } else if (menuview.queue_enqueue) {
-                    int value = Integer.parseInt(menuview.text.getText());
-                    this.queue.QueueAnimation(menuview, queue, value, "Enqueue");
+                } else if (menuview.getQueueState().equals("enqueue")) {
+                    int value = Integer.parseInt(menuview.getText1());
+                    this.menuview.QueueAnimation(queue, value, "Enqueue");
                     System.out.println("Enqueue value = " + value);
-                } else if (menuview.queue_peekback) {
-                    this.queue.QueueAnimation(menuview, queue, 1, "Peek_Back");
+                } else if (menuview.getQueueState().equals("peek_back")) {
+                    this.menuview.QueueAnimation(queue, 1, "Peek_Back");
                     System.out.println("Peek Back");
-                } else if (menuview.queue_peekfront) {
-                    this.queue.QueueAnimation(menuview, queue, 1, "Peek_Front");
+                } else if (menuview.getQueueState().equals("peek_front")) {
+                    this.menuview.QueueAnimation(queue, 1, "Peek_Front");
                     System.out.println("Peek Front");
-                } else if (menuview.stack_push) {
-                    int value = Integer.parseInt(menuview.text.getText());
-                    this.stack.StackAnimation(menuview, stack, value, "push");
+                } else if (menuview.getStackState().equals("push")) {
+                    int value = Integer.parseInt(menuview.getText1());
+                    this.menuview.StackAnimation(stack, value, "push");
                     System.out.println("push value = " + value);
-                } else if (menuview.stack_pop) {
-                    this.stack.StackAnimation(menuview, stack, 1, "pop");
+                } else if (menuview.getStackState().equals("pop")) {
+                    this.menuview.StackAnimation(stack, 1, "pop");
                     System.out.println("pop");
-                } else if (menuview.stack_peek) {
-                    this.stack.StackAnimation(menuview, stack, 1, "peek");
+                } else if (menuview.getStackState().equals("peek")) {
+                    this.menuview.StackAnimation(stack, 1, "peek");
                     System.out.println("peek");
-                } else if (menuview.llist_create) {
-                    System.out.println("create n = " + menuview.text.getText());
-                } else if (menuview.llist_search) {
-                    int value = Integer.parseInt(menuview.text.getText());
-                    this.linkedList.LinkedListAnimation(menuview, linkedList, 1, value, "search");
+                } else if (menuview.getLlistState().equals("search")) {
+                    int value = Integer.parseInt(menuview.getText1());
+                    this.menuview.LinkedListAnimation(linkedList, 1, value, "search");
                     System.out.println("search v = " + value);
-                } else if (menuview.llist_insert) {
-                    int index = Integer.parseInt(menuview.text.getText());
-                    int value = Integer.parseInt(menuview.text2.getText());
-                    this.linkedList.LinkedListAnimation(menuview, linkedList, index, value, "insert");
+                } else if (menuview.getLlistState().equals("insert")) {
+                    int index = Integer.parseInt(menuview.getText1());
+                    int value = Integer.parseInt(menuview.getText2());
+                    this.menuview.LinkedListAnimation(linkedList, index, value, "insert");
                     System.out.println("insert v = " + value + ", index = " + index);
-                } else if (menuview.llist_remove) {
-                    int index = Integer.parseInt(menuview.text.getText());
-                    this.linkedList.LinkedListAnimation(menuview, linkedList, index, 1, "remove");
+                } else if (menuview.getLlistState().equals("remove")) {
+                    int index = Integer.parseInt(menuview.getText1());
+                    this.menuview.LinkedListAnimation(linkedList, index, 1, "remove");
                     System.out.println("remove index " + index);
                 }
                 break;
             case "Stack":
-                this.stack.Stack_Menuview(menuview);
+                this.menuview.Stack_Menuview();
                 System.out.println("Stack");
                 break;
             case "Push":
-                this.stack.Stack_Menuview(menuview, src);
+                this.menuview.Stack_Menuview(src);
                 System.out.println("Push");
                 break;
             case "Pop":
-                this.stack.Stack_Menuview(menuview, src);
+                this.menuview.Stack_Menuview(src);
                 System.out.println("Pop");
                 break;
             case "Peek":
-                this.stack.Stack_Menuview(menuview, src);
+                this.menuview.Stack_Menuview(src);
                 System.out.println("Peek");
                 break;
             case "Queue":
-                this.queue.Queue_Menuview(menuview);
+                this.menuview.Queue_Menuview();
                 System.out.println("Queue");
                 break;
             case "Enqueue":
-                this.queue.Queue_Menuview(menuview, src);
+                this.menuview.Queue_Menuview(src);
                 System.out.println("Enqueue");
                 break;
             case "Dequeue":
-                this.queue.Queue_Menuview(menuview, src);
+                this.menuview.Queue_Menuview(src);
                 System.out.println("Dequeue");
                 break;
             case "Peek_Front":
-                this.queue.Queue_Menuview(menuview, src);
+                this.menuview.Queue_Menuview(src);
                 System.out.println("Peek_Front");
                 break;
             case "Peek_Back":
-                this.queue.Queue_Menuview(menuview, src);
+                this.menuview.Queue_Menuview(src);
                 System.out.println("Peek_Back");
                 break;
             case "quit":

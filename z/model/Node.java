@@ -1,8 +1,8 @@
 package z.model;
 
 public class Node {
-    public int data;
-    public Node next;
+    private int data;
+    private Node next;
 
     public Node(int data) {
         this.data = data;
@@ -21,5 +21,4 @@ public class Node {
     public void setNext(Node next) {
         this.next = next;
     }
-    
 }
