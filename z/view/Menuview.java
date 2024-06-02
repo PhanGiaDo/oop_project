@@ -18,24 +18,9 @@ public class Menuview extends JFrame{
     private JTextField text2;
     private JLabel label;
     private JLabel label2;
-    private JPanel panel;
-    private JPopupMenu jPopupMenu;
     private String llist_state = "";
     private String stack_state = "";
     private String queue_state = "";
-
-
-//     private boolean llist_create;
-//     private boolean llist_search;
-//     private boolean llist_insert;
-//     private boolean llist_remove;
-//     private boolean stack_push;
-//     private boolean stack_pop;
-//     private boolean stack_peek;
-//     private boolean queue_enqueue;
-//     private boolean queue_dequeue;
-//     private boolean queue_peekfront;
-//     private boolean queue_peekback;
     
     public Menuview() {
 //Start
